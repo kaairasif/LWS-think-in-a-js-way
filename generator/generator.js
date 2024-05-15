@@ -21,16 +21,14 @@
 // console.log("Hi4")
 // console.log(iterator.next())
 
-
-
 // Example 1 - Make Object Iterable - Using iterator
 // ======================================================
 let object = {
-    value1: 1,
-    value2: 2,
-    value3: 3,
-    value4: 4,
-}
+  value1: 1,
+  value2: 2,
+  value3: 3,
+  value4: 4,
+};
 
 //console.log(Object.entries(object)) // [ ['value1', 1], ['value2', 2], ['value3', 3], ['value4', 4] ]
 
@@ -59,10 +57,8 @@ let object = {
 
 // console.log([...object])
 
-
 // Example 1 - Make Object Iterable - Using generator
 // ======================================================
-
 
 // function * generator(obj) {
 //     const entries = Object.entries(obj)
@@ -84,7 +80,6 @@ let object = {
 // for (let el of iterator) {
 //     console.dir(el)
 // }
-
 
 // Example 2 - Range function - Using generator
 // ======================================================
@@ -108,8 +103,6 @@ let object = {
 //     console.log(el)
 // }
 
-
-
 // Example 3 - Generator Control Flow
 // ======================================================
 
@@ -126,42 +119,40 @@ let object = {
 // console.log(gen.next(50))
 // console.log(gen.next(100))
 
-
-
 // Example 4 - Async/Await Higher level of Abstraction to Generators
 // =========================================================================
 const takeOrder = (customer) => {
-    return new Promise((resolve) => {
-        setTimeout(()=> {
-            resolve(`take order for ${customer}`)
-           }, 1000)
-    })   
-}
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`take order for ${customer}`);
+    }, 1000);
+  });
+};
 
 const processOrder = (customer) => {
-    return new Promise((resolve) => {
-        setTimeout(()=> {
-            resolve(`order processed for ${customer}`)       
-           }, 1000)
-    })
-}
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`order processed for ${customer}`);
+    }, 1000);
+  });
+};
 
 const completeOrder = (customer) => {
-    return new Promise((resolve) => {
-        setTimeout(()=> {
-            resolve(`completed order for ${customer}`)   
-           }, 1000)
-    }) 
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`completed order for ${customer}`);
+    }, 1000);
+  });
+};
+
+async function* solution(customer) {
+  yield await takeOrder(customer);
+  yield await processOrder(customer);
+  yield await completeOrder(customer);
 }
 
-async function * solution(customer) {
-    yield await takeOrder(customer)
-    yield await processOrder(customer)
-    yield await completeOrder(customer)
-}
-
-let gen = solution("Rahim")
-const promises = [gen.next(), gen.next(), gen.next()]
+let gen = solution("Rahim");
+const promises = [gen.next(), gen.next(), gen.next()];
 
 // ( async function() {
 //     for await ( let el of promises) {
@@ -169,20 +160,17 @@ const promises = [gen.next(), gen.next(), gen.next()]
 //     }
 // })();
 
- async function genLoop() {
-    for await ( let el of promises) {
-        console.log(el.value)
-    }
-};
+async function genLoop() {
+  for await (let el of promises) {
+    console.log(el.value);
+  }
+}
 
-genLoop()
-
-
+genLoop();
 
 // gen.next().then(({value}) => console.log(value))
 // gen.next().then(({value}) => console.log(value))
 // gen.next().then(({value}) => console.log(value))
-
 
 // console.log(gen.next())
 // console.log(gen.next())
@@ -206,16 +194,3 @@ genLoop()
 // }
 
 // console.log(maxNumber(arr))
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,22 +1,24 @@
 const languages = [
-    { title: "JavaScript", type: "scripting" },
-    { title: "Java", type: {
-        case: "normal",
-        established: 1990
-    }  },
-    { title: "C++", type: "normal" },
-    { title: "Python", type: "scripting" }
-]
+  { title: "JavaScript", type: "scripting" },
+  {
+    title: "Java",
+    type: {
+      case: "normal",
+      established: 1990,
+    },
+  },
+  { title: "C++", type: "normal" },
+  { title: "Python", type: "scripting" },
+];
 
-let scriptingLanguages = {}
-
+let scriptingLanguages = {};
 
 // Way 1
 // languages.forEach((language) => {
 //     const type = language.type;
-    
+
 //     if(!scriptingLanguage[type]) {
-//         scriptingLanguage[type] = []        
+//         scriptingLanguage[type] = []
 //     }
 //     scriptingLanguage[type].push(language)
 // })
@@ -31,7 +33,8 @@ let scriptingLanguages = {}
 //     return res;
 // }, {});
 
-scriptingLanguages = Object.groupBy(languages, (lang) => lang.type.case ? lang.type.case : lang.type );
+scriptingLanguages = Object.groupBy(languages, (lang) =>
+  lang.type.case ? lang.type.case : lang.type
+);
 
-
-console.log("🚀 ~ file: script.js:8 ~ scriptingLanguage:", scriptingLanguages)
+console.log("🚀 ~ file: script.js:8 ~ scriptingLanguage:", scriptingLanguages);

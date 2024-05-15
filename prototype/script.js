@@ -115,3 +115,6 @@
 // let persons = [];
 // let persons = new Array();
 // console.dir(persons);
+
+let str = { country: "bangladesh" };
+console.dir(str);
